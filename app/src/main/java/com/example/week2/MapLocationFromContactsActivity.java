@@ -51,15 +51,7 @@ public class MapLocationFromContactsActivity extends Activity {
 			// Called when user clicks the Show Map button
 			@Override
 			public void onClick(View v) {
-				if (ContextCompat.checkSelfPermission(MapLocationFromContactsActivity.this, Manifest.permission.READ_CONTACTS)
-						!= PackageManager.PERMISSION_GRANTED) {
 
-					ActivityCompat.requestPermissions(
-							MapLocationFromContactsActivity.this,
-							new String[]{Manifest.permission.READ_CONTACTS},
-							100
-					);
-				}
 				try {
 					// Create Intent object for picking data from Contacts database
 					Intent intent = new Intent(Intent.ACTION_PICK,
@@ -129,18 +121,21 @@ public class MapLocationFromContactsActivity extends Activity {
 	protected void onRestart() {
 		Log.i(TAG, "The activity is about to be restarted.");
 		super.onRestart();
+		Log.d(TAG, "activity onRestart");
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
 		Log.i(TAG, "The activity is about to become visible.");
+		Log.d(TAG, "activity onStart");
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		Log.i(TAG, "The activity has become visible (it is now \"resumed\")");
+		Log.d(TAG, "activity Resume");
 	}
 
 	@Override
@@ -148,18 +143,21 @@ public class MapLocationFromContactsActivity extends Activity {
 		super.onPause();
 		Log.i(TAG,
 				"Another activity is taking focus (this activity is about to be \"paused\")");
+		Log.d(TAG, "activity onPause");
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
 		Log.i(TAG, "The activity is no longer visible (it is now \"stopped\")");
+		Log.d(TAG, "activity onStop");
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		Log.i(TAG, "The activity is about to be destroyed.");
+		Log.d(TAG, "activity onDestroy");
 	}
 
 }
