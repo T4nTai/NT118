@@ -51,7 +51,15 @@ public class MapLocationFromContactsActivity extends Activity {
 			// Called when user clicks the Show Map button
 			@Override
 			public void onClick(View v) {
+				if (ContextCompat.checkSelfPermission(MapLocationFromContactsActivity.this, Manifest.permission.READ_CONTACTS)
+						!= PackageManager.PERMISSION_GRANTED) {
 
+					ActivityCompat.requestPermissions(
+							MapLocationFromContactsActivity.this,
+							new String[]{Manifest.permission.READ_CONTACTS},
+							100
+					);
+				}
 				try {
 					// Create Intent object for picking data from Contacts database
 					Intent intent = new Intent(Intent.ACTION_PICK,
